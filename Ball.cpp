@@ -45,7 +45,7 @@ void ABall::Tick(float DeltaTime)
 
 	if (BallMesh && BallMesh->IsSimulatingPhysics())
 	{
-		FVector const Force = Direction * 500.0f;
+		FVector const Force = Direction * 900.0f;
 		BallMesh->AddForce(Force);
 	}
 }

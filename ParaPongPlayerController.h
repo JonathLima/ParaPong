@@ -16,6 +16,10 @@ class PARAPONG_FINAL_API AParaPongPlayerController : public APlayerController
 
 public:
 	virtual void SetupInputComponent() override;
-
+	
+	UFUNCTION()
+	void PauseGame();
+	
+	UFUNCTION()
 	void MoveRight(float Value);
 };

@@ -3,6 +3,7 @@
 
 #include "ParaPongCharacter.h"
 #include <Components/CapsuleComponent.h>
+#include <GameFramework/CharacterMovementComponent.h>
 
 // Sets default values
 AParaPongCharacter::AParaPongCharacter()
@@ -11,6 +12,8 @@ AParaPongCharacter::AParaPongCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 	TempMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TempMesh"));
 	TempMesh->SetupAttachment(GetCapsuleComponent());
+
+	GetCharacterMovement()->MaxWalkSpeed = 1200.0f;
 }
 
 // Called when the game starts or when spawned

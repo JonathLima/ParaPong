@@ -44,17 +44,37 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	class ACameraActor* MainCamera;
+
+	UPROPERTY(EditAnywhere, Category = "User Interface")
+	class UMainMenuWidget* MainMenu;
+
+	UPROPERTY(EditAnywhere, Category = "User Interface")
+	class UScoreWidget* ScoreWidget;
+	
+	UPROPERTY(EditAnywhere, Category = "User Interface")
+	class UUserWidget* PauseMenuWidget;
 	
 	UFUNCTION(BlueprintCallable)
-	void SetupGame(class AParaPongCharacter* Player1,class AParaPongCharacter* Player2 ,class ABall* Ball, class ACameraActor* Camera);
+	void SetupGame(class AParaPongCharacter* Player1,class AParaPongCharacter* Player2 ,
+		class ABall* Ball, class ACameraActor* Camera, class UMainMenuWidget* Menu,
+		class UScoreWidget* ScoreWdg, class UUserWidget* PauseMenuWdg);
+
+	void PauseGame();
 	
 private:
 	bool bIsGameOver;
 
+	// TimerHandle to count start match.
 	FTimerHandle StartMatchTimer;
+	
+	// TimeHandle to restart movement ball.
+	FTimerHandle StartMovementTimer;
 
 	int32 StartMatchCountdown;
 
+	UFUNCTION()
+	void OnPrepareToStarMatch();
+	
 	UFUNCTION()
 	void OnStartMatchCountdown();
 };
